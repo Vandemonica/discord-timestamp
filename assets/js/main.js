@@ -43,8 +43,6 @@ function alpine_container() {
       ]
     },
     init() {
-      console.log('Ello World');
-
       this.initTime();
       this.updateTime();
     },
@@ -69,17 +67,17 @@ function alpine_container() {
       this.data.picked.date = data.date;
       this.data.picked.time = data.time;
 
-      // setInterval(() => {
-      //   const d = new Date(this.data.picked.date + ' ' + this.data.picked.time + ' ' + this.data.picked.utc);
-      //   const now = new Date();
-      //   const x = this.getTime(now);
+      setInterval(() => {
+        const d = new Date(this.data.picked.date + ' ' + this.data.picked.time + ' ' + this.data.picked.utc);
+        const now = new Date();
+        const x = this.getTime(now);
 
-      //   this.data.user.day = x.day;
-      //   this.data.user.date = x.date;
-      //   this.data.user.time = x.time;
+        this.data.user.day = x.day;
+        this.data.user.date = x.date;
+        this.data.user.time = x.time;
 
-      //   this.data.picked.relative_time = this.getRelativeTime(d, now);
-      // }, 1000);
+        this.data.picked.relative_time = this.getRelativeTime(d, now);
+      }, 1000);
     },
     getEpoch() {
       return Math.floor(
